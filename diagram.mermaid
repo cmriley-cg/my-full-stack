@@ -1,0 +1,17 @@
+flowchart LR
+  User[🧍 User's Browser]
+  subgraph FE[Front End]
+    React[⚛️ React: UI Components]
+    Vite[Vite: Dev Server & Bundler]
+  end
+  subgraph BE[Back End]
+    FastAPI[⚙️ FastAPI: APIs & Business Logic]
+    DB[(💾 Database)]
+  end
+
+  User -->|clicks/buttons| React
+  React -->|fetch() JSON over HTTP| FastAPI
+  FastAPI --> DB
+  DB --> FastAPI
+  FastAPI -->|JSON response| React
+  React --> User
